@@ -28,4 +28,4 @@ The project library management system is made to ease the task of managing the d
 
 ## THANK YOU SO MUCH FOR CONSIDERING OR WATCHING THIS PROGRAM!!! HAVE A NICE DAY
 ### If you want to propose any suggestions, improvements, or even your own code to/for our program YOU ARE TRULY WELCOME :)
-### Just open a pull request/issue according to your need [here](www.github.com/WitteDuivel/library-management-oncemore)
+### Just open a pull request/issue according to your need [here](https://github.com/WitteDuivel/library-management-oncemore)
