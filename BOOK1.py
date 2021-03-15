@@ -1,5 +1,5 @@
 import mysql.connector
-mydb= mysql.connector(host="127.0.0.1", user="root", passwd="2zkNKcz&EOZaRjc$",database="library_management_project")
+mydb= mysql.connector.connect(host="127.0.0.1", user="root", passwd="2zkNKcz&EOZaRjc$",database="library_management_project")
 mycursor=mydb.cursor()
 def bookadd():
     bookIDp=input("ENTER THE BOOK'S ID:- ")
