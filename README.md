@@ -34,7 +34,7 @@ The project library management system is made to ease the task of managing the d
 #### 5.Now go back to the directory/folder in which you kept all the files and execute brain.py via either double clicking or through python command prompt.
 #### 6.You are ready to work with this.
 
-##NOTE:-
+## NOTE:-
 ### The SQL server credentials given in the files are just for test credentials which we used to develope our program. Make sure to change them according to your personal credentials. You can also opt to upload this program on an online database service provider to keep it running 24×7 but you will have to do it on your own. We do not own any liability or responsibility for what you do with our program.
 ## THANK YOU SO MUCH FOR CONSIDERING OR WATCHING THIS PROGRAM!!! HAVE A NICE DAY
 ### If you want to propose any suggestions, improvements, or even your own code to/for our program YOU ARE TRULY WELCOME :)
