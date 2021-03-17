@@ -2,7 +2,7 @@
 #note/ importing all the files and modules needed for this library_management_project
 import mysql.connector, STUDENTS1, USERS1, BOOK1, BORROWERS_RECORDS1, BookReturnRecords1
 #note/ connecting with sql database
-mydb= mysql.connector(host="127.0.0.1", user="root", passwd="2zkNKcz&EOZaRjc$",database="library_management_project")
+mydb= mysql.connector.connect(host="localhost", user="root", passwd="2zkNKcz&EOZaRjc$",database="library_management_project")
 #note/ storing sql data in mycursor
 mycursor=mydb.cursor()
 errormessage='''
@@ -20,9 +20,14 @@ if stafforstudent.lower()=="staff":
     if registereduser.lower()=="yes":
         #note/ here we will check the staff member's presence in the database
         staffID=int(input("PLEASE ENTER YOUR STAFF_ID:- "))
-        #todo query to verify the presence of staff_ID in the database
-        verificationstf="PLACE HOLDER TEXT"     #todo query to check the presence of this exact staffID into the database
-        if verificationstf==True:       #todo write the condition correctly in order to verify the user as existing
+        verificationstf=""
+        mycursor.execute("SELECT count(*) FROM USERS1 WHERE staff_ID = staffID")
+        result = mycursor.fetchone()
+        if result==None:
+            verificationstf==False
+        else:
+            verificationstf==True
+        if verificationstf==True:
             #note/ here we will ask the user to enter the specific task they want to perform
             wdywtd=input('''
             WHAT ACTION DO YOU WANT TO PERFORM FROM THE GIVEN OPTIONS(WRITE NO. OF THE ACTION YOU WANT TO PERFORM):-
@@ -43,8 +48,10 @@ if stafforstudent.lower()=="staff":
                 USERS1.userupdate()
             #note/ here we are showing the user their data as registered in the database
             elif wdywtd==4:
-                pass    #todo query to show the OP's data from the database
-            #note/ here the staff member can add the new book's data in the database
+                mycursor.execute("SELECT * FROM USERS1 WHERE staff_ID=staffID")
+                myresult = mycursor.fetchall()
+                for x in myresult:
+                    print(x)            #note/ here the staff member can add the new book's data in the database
             elif wdywtd==5:
                 BOOK1.bookadd()
             #note/ here the staff member can update the data of existing books in the database
@@ -52,7 +59,7 @@ if stafforstudent.lower()=="staff":
                 BOOK1.bookupdate()      #!THERE MIGHT BE A PROBLEM HERE
             else:
                 print(errormessage)
-        elif verificationstf==False:       #todo write the condition correctly in order to verify the user as non-existing
+        elif verificationstf==False:
             print(usernotexist)
         else:
             print(errormessage)
@@ -73,9 +80,14 @@ elif stafforstudent.lower()=="student":
     if registereduser.lower()=="yes":
         #note/ here we will verify the students presence in the database
         studID=int(input("PLEASE ENTER YOUR STUDENT_ID:- "))
-        #todo query ot verify the presence of studID into the database
-        verificationst="PLACE HOLDER TEXT"     #todo query to check the presence of this exact studID into the database
-        if verificationst==True:       #todo write the condition correctly in order to verify the user as existing
+        verificationst="PLACE HOLDER TEXT"
+        mycursor.execute("SELECT count(*) FROM STUDENTS1 WHERE stud_ID = studID")
+        result = mycursor.fetchone()
+        if result== None:
+            verificationst=False
+        else:
+            verificationst=True
+        if verificationst==True:
             #note/ here we will ask the user to enter the specific task they want to perform
             wdywtd=input('''
             WHAT ACTION DO YOU WANT TO PERFORM FROM THE GIVEN OPTIONS(WRITE NO. OF THE ACTION YOU WANT TO PERFORM):-
@@ -94,10 +106,13 @@ elif stafforstudent.lower()=="student":
                 STUDENTS1.userupdate()
             #note/ here we are showing the user their data as registered in the database
             elif wdywtd==4:
-                pass    #todo query to show the OP's data from the database
+                mycursor.execute("SELECT * FROM STUDENTS WHERE stud_ID=studID")
+                myresult = mycursor.fetchall()
+                for x in myresult:
+                    print(x)
             else:
                 print(errormessage)
-        elif verificationst==False:       #todo write the condition correctly in order to verify the user as non-existing
+        elif verificationst==False:
             print(usernotexist)
         else:
             print(errormessage)
