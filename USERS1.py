@@ -1,36 +1,46 @@
 import mysql.connector
-mydb= mysql.connector(host="127.0.0.1", user="root", passwd="2zkNKcz&EOZaRjc$",database="library_management_project")
+mydb= mysql.connector.connect(host="localhost", user="root", passwd="2zkNKcz&EOZaRjc$",database="library_management_project")
+mycursor=mydb.cursor()
 def useradd():
     staffIDp=int(input("ENTER YOUR STAFF_ID:- "))
-    #todo query to add this expression into the database
+    mycursor.execute("INSERT INTO USERS (staff_ID) VALUES (staffIDp)")
+    mydb.commit()
     stffnamep=input("ENTER YOUR FIRST NAME:- ")
-    #todo query to add this expression into the database
-    stflnamep=input("ENTER YOUR LAST NAME")
-    #todo query to add this expression into the database
+    mycursor.execute("INSERT INTO USERS (stffname) VALUES (stffnamep)")
+    mydb.commit()
+    stflnamep=input("ENTER YOUR LAST NAME:- ")
+    mycursor.execute("INSERT INTO USERS (stflname) VALUES (stflnamep)")
+    mydb.commit()
     stfcontactnumberp=int(input("ENTER YOUR CONTACT NUMBER:- "))
-    #todo query to add this expression into the database
+    mycursor.execute("INSERT INTO USERS (stfcontactnumber) VALUES (stfcontactnumberp)")
+    mydb.commit()
     stfemailp=input("ENTER YOUR EMAIL_ID:- ")
-    #todo query to add this expression into the database
+    mycursor.execute("INSERT INTO USERS (stfemail) VALUES (stfemailp)")
+    mydb.commit()
     stfaddressp=input("ENTER YOUR ADDRESS:- ")
-    #todo query to add this expression into the database
+    mycursor.execute("INSERT INTO USERS (stfaddress) VALUES (stfaddressp)")
+    mydb.commit()
     stfpasswordp=input("ENTER YOUR PASSWORD:- ")
-    #todo query to add this expression into the database
+    mycursor.execute("INSERT INTO USERS (stfpassword) VALUES (stfpasswordp)")
+    mydb.commit()
     stftypep=input("ENTER YOUR STAFF TYPE:- ")
-    #todo query to add this expression into the database
+    mycursor.execute("INSERT INTO USERS (stftype) VALUES (stftypep)")
+    mydb.commit()
 def userupdate():
     staffIDp=int(input("ENTER YOUR STAFF_ID:- "))
-    #todo query to update this expression into the database
+    mycursor.execute("UPDATE USERS SET staff_ID=staffIDp")
+    mydb.commit()
     stffnamep=input("ENTER YOUR FIRST NAME:- ")
-    #todo query to update this expression into the database
-    stflnamep=input("ENTER YOUR LAST NAME")
-    #todo query to update this expression into the database
+    mycursor.execute("UPDATE USERS SET stffname=stffnamep")
+    stflnamep=input("ENTER YOUR LAST NAME:- ")
+    mycursor.execute("UPDATE USERS SET stflname=stflnamep")
     stfcontactnumberp=int(input("ENTER YOUR CONTACT NUMBER:- "))
-    #todo query to update this expression into the database
+    mycursor.execute("UPDATE USERS SET stfcontactnumber=stfcontactnumberp")
     stfemailp=input("ENTER YOUR EMAIL_ID:- ")
-    #todo query to update this expression into the database
+    mycursor.execute("UPDATE USERS SET stfemail=stfemailp")
     stfaddressp=input("ENTER YOUR ADDRESS:- ")
-    #todo query to update this expression into the database
+    mycursor.execute("UPDATE USERS SET stfaddress=stfaddressp")
     stfpasswordp=input("ENTER YOUR PASSWORD:- ")
-    #todo query to update this expression into the database
+    mycursor.execute("UPDATE USERS SET stfpassword=stfpasswordp")
     stftypep=input("ENTER YOUR STAFF TYPE:- ")
-    #todo query to update this expression into the database
+    mycursor.execute("UPDATE USERS SET stftype=stftypep")
